@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AboutMeController;
+use App\Http\Controllers\Admin\QulificationController;
 /*
 
 |--------------------------------------------------------------------------
@@ -23,6 +24,8 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::middleware('auth')->name('admin.')->prefix('/admin')->group(function(){
     Route::get('/', [AdminController::class, 'index'])->name('index');
     Route::resource('/aboutme', AboutmeController::class);
+    Route::get('/qualification/education', [QulificationController::class, 'showEducation'])->name('qualification.edu');
+    Route::resource('/qualification', QulificationController::class);
 });
 
 Auth::routes();

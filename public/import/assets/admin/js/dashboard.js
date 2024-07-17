@@ -522,3 +522,14 @@
     }
   });
 })(jQuery);
+
+//remove image when click on close button
+function removeImage(){
+  document.querySelector('#imagePreview img').remove();
+  document.querySelector('#close_btn ').remove();
+  document.querySelector('#imagePreview').remove();
+}
+
+
+
+

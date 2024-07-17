@@ -1,10 +1,11 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class AboutMeController extends Controller
 {
@@ -52,10 +53,34 @@ class AboutMeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+    public function update(Request $request,User $user){
+        //  $validated = $request->validate(['name'=> ['required','min:3']]);
+        $user = User::first();
+        $validated = $request->validate([
+          'name' => 'required|min:3',
+          'email' => 'required|email',
+          'phone' => 'required',
+          'address' => 'required',
+          'degree' => 'required',
+          'experience' => 'required',
+        //   'birthday' => 'required|date|before_or_equal:today',
+          'job' => 'required',
+          'image' => 'image|mimes:jpeg,png,jpg|max:2048',
+      ]);
+  
+      if($request->hasfile('image')){
+          if($user->profile_pic != null){
+              Storage::delete($user->profile_pic);
+          }
+          $get_new_file = $request->file('image')->store('public/images');
+          $user->profile_pic = $get_new_file;
+      }
+  
+      $user->update($validated);
+  
+      return to_route('admin.aboutme.index')->with('message','Data Updated');
+      }
+  
 
     /**
      * Remove the specified resource from storage.
