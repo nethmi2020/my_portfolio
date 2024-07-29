@@ -5,6 +5,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AboutMeController;
 use App\Http\Controllers\Admin\QulificationController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\PortfolioController;
 /*
 
 |--------------------------------------------------------------------------
@@ -25,7 +27,10 @@ Route::middleware('auth')->name('admin.')->prefix('/admin')->group(function(){
     Route::get('/', [AdminController::class, 'index'])->name('index');
     Route::resource('/aboutme', AboutmeController::class);
     Route::get('/qualification/education', [QulificationController::class, 'showEducation'])->name('qualification.edu');
+    Route::get('/qualification/experience', [QulificationController::class, 'showExperience'])->name('qualification.exp');
     Route::resource('/qualification', QulificationController::class);
+    Route::resource('/category', CategoryController::class);
+    Route::resource('/portfolio', PortfolioController::class);
 });
 
 Auth::routes();

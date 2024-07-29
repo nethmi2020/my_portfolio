@@ -1,14 +1,14 @@
 @extends('admin.layouts.admin')
 
 @section('content')
-{{-- 
-   
+{{--
+
 <div class="main-panel">
     <div class="content-wrapper"> --}}
       <div class="col-12">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title">Add New Qualification</h4>
+            <h4 class="card-title">Add New Qualification/Experience Data</h4>
             @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>

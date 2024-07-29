@@ -79,8 +79,8 @@
               <div class="collapse" id="ui-qualification">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="{{route('admin.qualification.edu')}}">Education</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="#">Experience</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="#">Show All</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{route('admin.qualification.exp')}}">Experience</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{route('admin.qualification.index')}}">Show All</a></li>
                 </ul>
               </div>
             </li>
@@ -92,8 +92,8 @@
               </a>
               <div class="collapse" id="ui-portfolio">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="#">Category</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="#">Portfolio</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{route('admin.category.index')}}">Category</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{route('admin.portfolio.index')}}">Portfolio</a></li>
                 </ul>
               </div>
             </li>
