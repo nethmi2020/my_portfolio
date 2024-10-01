@@ -30,6 +30,11 @@
                     <label for="image">Upload Image</label>
                     <input type="file" class="form-control" id="image" name="image" placeholder="Image"
                     value={{old('image')}}>
+
+                    @if ($portfolio->image)
+                      <img src="{{ asset('storage/images/portfolios/' . basename($portfolio->image)) }}" alt="Current Image" style="max-width: 200px; max-height: 200px; margin-bottom: 10px;">
+                    @endif
+                    
                 </div>
                 <div class="form-group">
                     <label for="project_url">Project URL</label>

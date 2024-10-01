@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Portfolio;
 use App\Models\Category;
+use Illuminate\Support\Facades\Storage;
 
 class PortfolioController extends Controller
 {
@@ -48,7 +49,7 @@ class PortfolioController extends Controller
         $portfolio->category_id = $validated['category_id'];
 
         if($request->hasFile('image')){
-            $get_file=$request->file('image')->store('images/portfolios');
+            $get_file=$request->file('image')->store('public/images/portfolios');
             $portfolio->image=$get_file;
         }
         $portfolio->save();
@@ -77,16 +78,36 @@ class PortfolioController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Portfolio $portfolio)
     {
-        //
+        $validated=$request->validate([
+            'title'=>'required',
+            'project_url'=>'required',
+            'category_id'=>'required'
+
+        ]);
+        $portfolio->title=$validated['title'];
+        $portfolio->project_url=$validated['project_url'];
+        $portfolio->category_id=$validated['category_id'];
+
+        if($request->hasfile('image'))
+        {
+            Storage::delete($portfolio->image);
+            $get_file=$request->file('image')->store('public/images/portfolios');
+            $portfolio->image=$get_file;
+        }
+       $portfolio->update($validated);
+
+        return to_route('admin.portfolio.index')->with('message','Portfolio Updated');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Portfolio $portfolio)
     {
-        //
+        $portfolio->delete();
+
+        return back()->with('message','portfolio deleted successfully');
     }
 }
