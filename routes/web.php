@@ -6,7 +6,10 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AboutMeController;
 use App\Http\Controllers\Admin\QulificationController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\PortfolioController;
+use App\Http\Controllers\Admin\SkillController;
+use App\Http\Controllers\Admin\ReviewController;
 /*
 
 |--------------------------------------------------------------------------
@@ -31,6 +34,9 @@ Route::middleware('auth')->name('admin.')->prefix('/admin')->group(function(){
     Route::resource('/qualification', QulificationController::class);
     Route::resource('/category', CategoryController::class);
     Route::resource('/portfolio', PortfolioController::class);
+    Route::resource('/service', ServiceController::class);
+    Route::resource('/skill', SkillController::class);
+    Route::resource('/review', ReviewController::class);
 });
 
 Auth::routes();

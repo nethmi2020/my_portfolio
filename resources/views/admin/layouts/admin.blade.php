@@ -98,19 +98,19 @@
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="{{route('admin.service.index')}}">
                 <span class="menu-title">Services</span>
                 <i class="mdi mdi-format-list-bulleted menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="{{route('admin.skill.index')}}">
                 <span class="menu-title">Skills</span>
                 <i class="mdi mdi-puzzle menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="{{route('admin.review.index')}}">
                 <span class="menu-title">Reviews</span>
                 <i class="mdi mdi-thumbs-up-down menu-icon"></i>
               </a>
