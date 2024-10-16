@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\PortfolioController;
 use App\Http\Controllers\Admin\SkillController;
 use App\Http\Controllers\Admin\ReviewController;
+use App\Http\Controllers\Admin\SettingController;
 /*
 
 |--------------------------------------------------------------------------
@@ -37,6 +38,7 @@ Route::middleware('auth')->name('admin.')->prefix('/admin')->group(function(){
     Route::resource('/service', ServiceController::class);
     Route::resource('/skill', SkillController::class);
     Route::resource('/review', ReviewController::class);
+    Route::resource('/setting', SettingController::class);
 });
 
 Auth::routes();

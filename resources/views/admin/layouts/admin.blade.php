@@ -116,7 +116,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="{{route('admin.setting.index')}}">
                 <span class="menu-title">Settings</span>
                 <i class="mdi mdi-settings menu-icon"></i>
               </a>
