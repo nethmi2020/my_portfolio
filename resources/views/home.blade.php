@@ -32,7 +32,7 @@
                     <h1 class="typed-text-output d-inline font-weight-lighter text-white"></h1>
                     <div class="typed-text d-none">{{ $user?->job }}</div>
                     <div class="d-flex align-items-center justify-content-center justify-content-lg-start pt-5">
-                        <a href="{{ $setting->cv_url }}" class="btn btn-outline-light mr-5">Download CV</a>
+                        <a href="{{ $setting->cv_url }}" target="_blank" class="btn btn-outline-light mr-5">Download CV</a>
                         <button type="button" class="btn-play" data-toggle="modal"
                             data-src="{{$setting->video_url }}" data-target="#videoModal">
                             <span></span>
@@ -43,36 +43,120 @@
             </div>
         </div>
     </div>
-    <!-- Header End -->
-        <!-- About Start -->
-    <div class="container-fluid py-5" id="about">
-        <div class="container">
-            <div class="position-relative d-flex align-items-center justify-content-center">
-                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">About</h1>
-                <h1 class="position-absolute text-uppercase text-primary">About Me</h1>
-            </div>
-            <div class="row align-items-center">
-                <div class="col-lg-5 pb-4 pb-lg-0">
-                    <img class="img-fluid rounded w-100" src="{{ Storage::url($user->profile_pic) }}" alt="profile_picture">
+ <!-- Header End -->
+   <!-- About Start -->
+        <div class="container-fluid py-5" id="about">
+            <div class="container">
+                <div class="position-relative d-flex align-items-center justify-content-center">
+                    <h1 class="display-1 text-uppercase text-light-grey" style="-webkit-text-stroke: 1px #dee2e6;">About Me</h1>
+                    {{-- <h1 class="position-absolute text-uppercase text-primary">About Me</h1> --}}
                 </div>
-                <div class="col-lg-7">
-                    <h3 class="mb-4"></h3>
-                    <p></p>
-                    <div class="row mb-3">
-                        <div class="col-sm-6 py-2"><h6>Name: <span class="text-secondary">{{ $user?->name }}</span></h6></div>
-                        <div class="col-sm-6 py-2"><h6>Birthday: <span class="text-secondary">{{ $user?->birthday }}</span></h6></div>
-                        <div class="col-sm-6 py-2"><h6>Degree: <span class="text-secondary">{{ $user?->degree }}</span></h6></div>
-                        <div class="col-sm-6 py-2"><h6>Experience: <span class="text-secondary">{{ $user?->experience }} Years</span></h6></div>
-                        <div class="col-sm-6 py-2"><h6>Phone: <span class="text-secondary">{{ $user?->phone }}</span></h6></div>
-                        <div class="col-sm-6 py-2"><h6>Email: <span class="text-secondary">{{ $user?->email }}</span></h6></div>
-                        <div class="col-sm-6 py-2"><h6>Address: <span class="text-secondary">{{ $user?->address }}</span></h6></div>
-                        <div class="col-sm-6 py-2"><h6>Freelance: <span class="text-secondary">Available</span></h6></div>
+                <div class="row align-items-center">
+                    <div class="col-lg-5 pb-4 pb-lg-0">
+                        <img class="img-fluid rounded "  style="width: 400px; height: auto;" src="{{ Storage::url($user->profile_pic) }}" alt="profile_picture">
                     </div>
-                    <a href="" class="btn btn-outline-primary mr-4">Hire Me</a>
-                    {{-- <a href="" class="btn btn-outline-primary">Learn More</a> --}}
+                    <div class="col-lg-7">
+                        <h3 class="mb-4"></h3>
+                        <p></p>
+                        <div class="row mb-3">
+                            <div class="col-sm-6 py-2"><h6>Name: <span class="text-secondary">{{ $user?->name }}</span></h6></div>
+                            <div class="col-sm-6 py-2"><h6>Birthday: <span class="text-secondary">{{ $user?->birthday }}</span></h6></div>
+                            <div class="col-sm-6 py-2"><h6>Degree: <span class="text-secondary">{{ $user?->degree }}</span></h6></div>
+                            <div class="col-sm-6 py-2"><h6>Experience: <span class="text-secondary">{{ $user?->experience }} Years</span></h6></div>
+                            <div class="col-sm-6 py-2"><h6>Phone: <span class="text-secondary">{{ $user?->phone }}</span></h6></div>
+                            <div class="col-sm-6 py-2"><h6>Email: <span class="text-secondary">{{ $user?->email }}</span></h6></div>
+                            <div class="col-sm-6 py-2"><h6>Address: <span class="text-secondary">{{ $user?->address }}</span></h6></div>
+                            <div class="col-sm-6 py-2"><h6>Freelance: <span class="text-secondary">Available</span></h6></div>
+                        </div>
+                        <a href="{{ $setting->freelance_url }}" class="btn btn-outline-primary mr-4">Hire Me</a>
+                        {{-- <a href="" class="btn btn-outline-primary">Learn More</a> --}}
+                    </div>
+                </div>
+            </div>
+        </div>
+   <!-- About End -->
+
+
+   <!-- Education and Experience Start -->
+   <div class="container-fluid py-5" id="qualification">
+    <div class="container">
+        <div class="position-relative d-flex align-items-center justify-content-center">
+            <h1 class="display-1 text-uppercase text-light-grey" style="-webkit-text-stroke: 1px #dee2e6;">Education and Experience</h1>
+            {{-- <h1 class="position-absolute text-uppercase text-primary">About Me</h1> --}}
+        </div>
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h3 class="mb-4">My Education</h3>
+                <div class="border-left border-primary pt-2 pl-4 ml-2">
+                    @foreach ($educations as $education)
+                    <div class="position-relative mb-4">
+                        <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
+                        <h5 class="font-weight-bold mb-1">{{ $education->title }}</h5>
+                        <p class="mb-2"><strong>{{ $education->association }}</strong> | <small>{{ $education->from }} - {{ $education->to }}</small></p>
+                        <p>{{ $education->description }} </p>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h3 class="mb-4">My Education</h3>
+                <div class="border-left border-primary pt-2 pl-4 ml-2">
+                    @foreach ($works as $work)
+                    <div class="position-relative mb-4">
+                        <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
+                        <h5 class="font-weight-bold mb-1">{{ $work->title }}</h5>
+                        <p class="mb-2"><strong>{{ $work->association }}</strong> | <small>{{ $work->from }} - {{ $work->to }}</small></p>
+                        <p>{{ $work->description }} </p>
+                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
     </div>
-    <!-- About End -->
+</div>
+<!-- Education and Experience End -->
+
+
+   <!-- Skill Start -->
+   <div class="container-fluid py-5" id="qualification">
+    <div class="container">
+        <div class="position-relative d-flex align-items-center justify-content-center">
+            <h1 class="display-1 text-uppercase text-light-grey" style="-webkit-text-stroke: 1px #dee2e6;">Skills</h1>
+            {{-- <h1 class="position-absolute text-uppercase text-primary">About Me</h1> --}}
+        </div>
+        <div class="row align-items-center">
+            {{-- foreach($skills->split($skills->count()/3) as $row) --}}
+
+            {{-- <div class="col-md-6">
+                @foreach($row as $skill)
+                <div class="skill mb-4">
+                    <div class="d-flex justify-content-between">
+                        <h6 class="font-weight-bold">{{ $skill->name }}</h6>
+                        <h6 class="font-weight-bold">{{$skill->percent}}%</h6>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="{{$skill->percent}}" aria-valuemin="0" aria-valuemax="100" style="background-color: {{$skill->color}}"></div>
+                    </div>
+                </div>
+                @endforeach
+            </div> --}}
+
+            @foreach ($skills->chunk(ceil($skills->count() / 3)) as $chunk)
+                <div class="col-md-6">
+                    @foreach($chunk as $skill)
+                        <div class="d-flex justify-content-between">
+                            <h6 class="font-weight-bold">{{ $skill->name }}</h6>
+                            <h6 class="font-weight-bold">{{$skill->percent}}%</h6>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="{{$skill->percent}}" aria-valuemin="0" aria-valuemax="100" style="width: {{$skill->percent}}%; background-color: {{$skill->color}}"></div>
+                        </div>
+                    @endforeach
+                </div>
+            @endforeach
+
+        </div>
+    </div>
+    </div>
+    <!-- Skill End -->
 @endsection

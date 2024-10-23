@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Qualification;
 use App\Models\Setting;
+use App\Models\Skill;
 class HomeController extends Controller
 {
     /**
@@ -25,13 +27,20 @@ class HomeController extends Controller
     public function index()
     {
         $user =User::find(1);
+
         $setting = Setting::first();
+
+        $educations=Qualification::where('type','Education')->orderBy('id','desc')->take(3)->get();
+
+        $works=Qualification::where('type','Work')->orderBy('id','desc')->take(3)->get();
+
+        $skills=Skill::orderBy('id','desc')->take(6)->get();
 
         if($user==null){
             return response()->json(['error'=>'User not found'],404);
         }else{
-            return view('home',compact('user','setting'));
+            return view('home',compact('user','setting','educations','works','skills'));
         }
-       
+
     }
 }
