@@ -7,6 +7,9 @@ use App\Models\User;
 use App\Models\Qualification;
 use App\Models\Setting;
 use App\Models\Skill;
+use App\Models\Service;
+use App\Models\Category;
+use App\Models\Portfolio;
 class HomeController extends Controller
 {
     /**
@@ -36,10 +39,17 @@ class HomeController extends Controller
 
         $skills=Skill::orderBy('id','desc')->take(6)->get();
 
+        $services=Service::orderBy('id','desc')->take(3)->get();
+
+        $categories=Category::all();
+
+        $portfolios=Portfolio::with('category')->orderBy('id','desc')->take(6)->get();
+
+
         if($user==null){
             return response()->json(['error'=>'User not found'],404);
         }else{
-            return view('home',compact('user','setting','educations','works','skills'));
+            return view('home',compact('user','setting','educations','works','skills','services','categories','portfolios'));
         }
 
     }

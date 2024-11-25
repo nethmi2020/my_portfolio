@@ -11,4 +11,8 @@ class Category extends Model
     protected $fillable=[
         'name'
     ];
+
+    public function portfolios(){
+        return $this->hasMany(Portfolio::class);
+    }
 }

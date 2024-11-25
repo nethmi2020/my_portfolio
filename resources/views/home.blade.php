@@ -159,4 +159,64 @@
     </div>
     </div>
     <!-- Skill End -->
+
+
+     <!-- Service Start -->
+   <div class="container-fluid py-5" id="qualification">
+    <div class="container">
+        <div class="position-relative d-flex align-items-center justify-content-center">
+            <h1 class="display-1 text-uppercase text-light-grey" style="-webkit-text-stroke: 1px #dee2e6;">Services</h1>
+            {{-- <h1 class="position-absolute text-uppercase text-primary">About Me</h1> --}}
+        </div>
+        <div class="row pb-3">
+
+            @foreach ($services as $service)
+                <div class="col-lg-4 col-md-6 text-center mb-5">
+                    <div class="d-flex align-items-center justify-content-center mb-4">
+                        <i class="{{ $service->icon }} service-icon bg-primary text-white mr-3"></i>
+                        <h4 class="font-weight-bold m-0">{{ $service->name }}</h4>
+                    </div>
+                    <p>{{ $service->description }}</p>
+                </div>
+            @endforeach
+
+        </div>
+    </div>
+    </div>
+    <!-- Service End -->
+
+      <!-- Portfolio Start -->
+   <div class="container-fluid py-5" id="qualification">
+    <div class="container">
+        <div class="position-relative d-flex align-items-center justify-content-center">
+            <h1 class="display-1 text-uppercase text-light-grey" style="-webkit-text-stroke: 1px #dee2e6;">Gallery</h1>
+            {{-- <h1 class="position-absolute text-uppercase text-primary">About Me</h1> --}}
+        </div>
+        <div class="row">
+            <div class="col-12 text-center mb-2">
+                <ul class="lit-inline-mb-4" id="portfolio-flters">
+                    <li class="btn btn-sm btn-outline-primary m-1 active"  data-filter="*">All</li>
+                </ul>
+
+                @foreach ($categories as $category)
+                <li class="btn btn-sm btn-outline-primary m-1 active"  data-filter="{{$category->name}}">{{$category->name}}</li>
+                @endforeach
+            </div>
+        </div>
+        <div class="row portfolio-container">
+
+            @foreach ($portfolios as $portfolio)
+                <div class="col-lg-4 col-md-6 text-center mb-5">
+                    <div class="d-flex align-items-center justify-content-center mb-4">
+                        <i class="{{ $service->icon }} service-icon bg-primary text-white mr-3"></i>
+                        <h4 class="font-weight-bold m-0">{{ $portfolio->category->name }}</h4>
+                    </div>
+                    <p>{{ $service->description }}</p>
+                </div>
+            @endforeach
+
+        </div>
+    </div>
+    </div>
+    <!-- Portfolio End -->
 @endsection
