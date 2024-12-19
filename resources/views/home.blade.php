@@ -185,41 +185,7 @@
   </div>
     <!-- Service End -->
 
-      <!-- Portfolio Start -->
-   {{-- <div class="container-fluid py-5" id="qualification"> --}}
-    {{-- <div class="container"> --}}
-        {{-- <div class="position-relative d-flex align-items-center justify-content-center"> --}}
-            {{-- <h1 class="display-6 text-uppercase text-light-grey" style="-webkit-text-stroke: 1px #dee2e6;">Gallery</h1> --}}
-            {{-- <h1 class="position-absolute text-uppercase text-primary">About Me</h1> --}}
-        {{-- </div> --}}
-        {{-- <div class="row">
-            <div class="col-12 text-center mb-2">
-                <ul class="list-inline mb-4" id="portfolio-flters">
-                    <li class="btn btn-sm btn-outline-primary m-1 active" data-filter="*">All</li>
-                    @foreach ($categories as $category)
-                        <li class="btn btn-sm btn-outline-primary m-1" data-filter=".{{ Str::slug($category->name) }}">
-                            {{ $category->name }}
-                        </li>
-                    @endforeach
-                </ul>
-
-            </div>
-        </div> --}}
-        {{-- <div class="row portfolio-container">
-            @foreach ($portfolios as $portfolio)
-                <div class="col-lg-4 col-md-6 text-center mb-5 portfolio-item {{ Str::slug($portfolio->category->name) }}">
-                    <div class="d-flex align-items-center justify-content-center mb-4">
-                        <i class="{{ $service->icon }} service-icon bg-primary text-white mr-3"></i>
-                        <h4 class="font-weight-bold m-0">{{ $portfolio->category->name }}</h4>
-                    </div>
-                    <p>{{ $service->description }}</p>
-                </div>
-            @endforeach
-        </div> --}}
-    {{-- </div> --}}
-    {{-- </div> --}}
-    <!-- Portfolio End -->
-
+  <!-- Portfolio Start -->
     <div class="container-fluid py-5" id="qualification">
         <div class="container">
             <div class="position-relative d-flex align-items-center justify-content-center">
@@ -250,5 +216,65 @@
             </div>
         </div>
     </div>
+  <!-- Portfolio End -->
 
+
+  {{-- contact-us-page start--}}
+  <div class="container-fluid py-5" id="contact">
+    <div class="container">
+        <div class="position-relative d-flex align-item-center justify-content-center">
+            <h1 class="display-6 text-uppercase text-light-grey" style="-webkit-text-stroke: 1px #dee2e6;">Contact US</h1>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="contact-form text-center">
+                    @if(Session::has('message'))
+                        <div class="alert alert-primary" role="alert">
+                            {{Session::get('message')}}
+                        </div>
+                    @endif
+                    <form action="{{route('contacts')}}" id="contactForm" method="POST">
+                        @csrf
+                        <div class="form-row">
+                            <div class="control-group col-sm-6">
+                                <input type="text" name="name" id="name" placeholder="your name" class="form-control p-4" value="{{ old('name')}}" required>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group col-sm-6">
+                                <input type="email" name="email" id="email" placeholder="your email" class="form-control p-4" value="{{ old('email')}}" required>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <input type="text" name="subject" id="subject" placeholder="Subject" class="form-control p-4" value="{{ old('subject')}}" required>
+                            <p class="help-block text-danger"></p>
+                        </div>
+
+                        <div class="control-group">
+                          <textarea class="form-control py-3 px-4" name="content" placeholder="message"  id="message" cols="30" rows="10" required>{{ old('content')}}</textarea>
+                          <p class="help-block text-danger"></p>
+                        </div>
+
+                        <div class="">
+                            <button class="btn btn-outline-primary" type="submit" id="sendMessageButton">Send Message</button>
+                        </div>
+
+                        @if($errors->any())
+                        <br>
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  {{-- contact-us-page end--}}
 @endsection

@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\PortfolioController;
 use App\Http\Controllers\Admin\SkillController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\ContactController;
 /*
 
 |--------------------------------------------------------------------------
@@ -24,6 +25,7 @@ use App\Http\Controllers\Admin\SettingController;
 */
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('/', [ContactController::class, 'submit'])->name('contacts');
 
 
 
