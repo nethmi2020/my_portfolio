@@ -71,4 +71,5 @@ password 12121212
 Email: nethmiwelgamvila@gmail.com
 Password: 12121212 
 
+gallery catgory filter is not working-issue fixed, 
 -->

@@ -127,7 +127,7 @@
               {{-- <form method="GET" action="#">
               <button class="btn btn-block btn-lg btn-gradient-primary mt-4">+ Add a project</button>
               </form> --}}
-              <form method="POST" action="#">
+              <form method="POST" action="{{route('logout')}}">
                @csrf
                 <button class="btn btn-block btn-lg btn-danger mt-4">SignOut</button>
               </form>

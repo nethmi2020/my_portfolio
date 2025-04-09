@@ -15,8 +15,10 @@ class PortfolioController extends Controller
      */
     public function index()
     {
-        $portfolios=Portfolio::all();
+        // $portfolios=Portfolio::all();
 
+        $portfolios=Portfolio::with('category')->get();
+        // dd($portfolios);
         return view('admin.portfolios.index',compact('portfolios'));
     }
 
