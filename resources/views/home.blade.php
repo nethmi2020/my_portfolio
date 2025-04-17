@@ -31,19 +31,21 @@
                     <h1 class="display-3 text-uppercase text-primary mb-2" style="-webkit-text-stroke: 2px #ffffff;">{{ $user?->name }}</h1>
                     <h1 class="typed-text-output d-inline font-weight-lighter text-white"></h1>
                     <div class="typed-text d-none">{{ $user?->job }}</div>
-                    {{-- <div class="d-flex align-items-center justify-content-center justify-content-lg-start pt-5">
+                    <div class="d-flex align-items-center justify-content-center justify-content-lg-start pt-5">
                         <a href="{{ $setting->cv_url }}" target="_blank" class="btn btn-outline-light mr-5">Download CV</a>
-                        <button type="button" class="btn-play" data-toggle="modal"
+                        {{-- <button type="button" class="btn-play" data-toggle="modal"
                             data-src="{{$setting->video_url }}" data-target="#videoModal">
                             <span></span>
-                        </button>
-                        <h5 class="font-weight-normal text-white m-0 ml-4 d-none d-sm-block">Play Video</h5>
-                    </div> --}}
+                        </button> --}}
+                        {{-- <h5 class="font-weight-normal text-white m-0 ml-4 d-none d-sm-block">Play Video</h5> --}}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
  <!-- Header End -->
+
+ 
    <!-- About Start -->
         <div class="container-fluid py-5" id="about">
             <div class="container">
@@ -68,7 +70,7 @@
                             <div class="col-sm-6 py-2"><h6>Address: <span class="text-secondary">{{ $user?->address }}</span></h6></div>
                             <div class="col-sm-6 py-2"><h6>Freelance: <span class="text-secondary">Available</span></h6></div>
                         </div>
-                        <a href="{{ $setting->freelance_url }}" class="btn btn-outline-primary mr-4">Hire Me</a>
+                        {{-- <a href="{{ $setting->freelance_url }}" class="btn btn-outline-primary mr-4">Hire Me</a> --}}
                         {{-- <a href="" class="btn btn-outline-primary">Learn More</a> --}}
                     </div>
                 </div>
@@ -210,85 +212,130 @@
   <!-- Portfolio End -->
 
 
+
   {{-- contact-us-page start--}}
-  <div class="container-fluid py-5" id="contact">
-    <div class="container">
-        <div class="position-relative d-flex align-item-center justify-content-center">
-            <h1 class="display-6 text-uppercase text-light-grey" style="-webkit-text-stroke: 1px #dee2e6;">Contact US</h1>
+    <div class="container-fluid py-5" id="contact">
+        <div class="container">
+            
+        <div class="row d-flex contact-info mb-5">
+            <div class="col-md-6 col-lg-3 d-flex ftco-animate fadeInUp ftco-animated">
+                <div class="align-self-stretch box p-4 text-center">
+                    <div class="icon d-flex align-items-center justify-content-center">
+                        <i class="far fa-address-card "  style="font-size: 40px"></i>
+                    </div>
+                    <h3 class="mb-4 mt-2">Address</h3>
+                <p>Anuththara, Lindara, Mirirgama</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 d-flex ftco-animate fadeInUp ftco-animated">
+                <div class="align-self-stretch box p-4 text-center">
+                    <div class="icon d-flex align-items-center justify-content-center">
+                        <i class="fas fa-phone-alt" style="font-size: 40px"></i>
+                    </div>
+                    <h3 class="mb-4 mt-2">Contact Number</h3>
+                <p><a href="tel:+94716897175">+94 71 689 7175</a></p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 d-flex ftco-animate fadeInUp ftco-animated">
+                <div class="align-self-stretch box p-4 text-center">
+                    <div class="icon d-flex align-items-center justify-content-center">
+                        <i class="fas fa-mail-bulk" style="font-size: 40px"></i>
+                    </div>
+                    <h3 class="mb-4 mt-2">Email Address</h3>
+                <p><a href="mailto:nethmiwelgamvila@gmail.com" target="_blank">nethmiwelgamvila<br>@gmail.com</a></p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 d-flex ftco-animate fadeInUp ftco-animated">
+                <div class="align-self-stretch box p-4 text-center">
+                    <div class="icon d-flex align-items-center justify-content-center">
+                        <i class="fa fa-linkedin" style="font-size: 40px"></i>
+                    </div>
+                    <h3 class="mb-4 mt-2">Linkedin</h3>
+                <p><a href="https://www.linkedin.com/in/nethmi96/" target="_blank">Nethmi Welgamvila</a></p>
+                </div>
+            </div>
         </div>
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <div class="contact-form text-center">
-                    @if(Session::has('message'))
-                        <div class="alert alert-primary" role="alert">
-                            {{Session::get('message')}}
-                        </div>
-                    @endif
-                    <form action="{{route('contacts')}}" id="contactForm" method="POST">
-                        @csrf
-                        <div class="form-row">
-                            <div class="control-group col-sm-6">
-                                <input type="text" name="name" id="name" placeholder="your name" class="form-control p-4" value="{{ old('name')}}" required>
-                                <p class="help-block text-danger"></p>
+        </div>
+        <div class="container">
+            <div class="position-relative d-flex align-item-center justify-content-center">
+                <h1 class="display-6 text-uppercase text-light-grey" style="-webkit-text-stroke: 1px #dee2e6;">Contact US</h1>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="contact-form text-center">
+                        @if(Session::has('message'))
+                            <div class="alert alert-primary" role="alert">
+                                {{Session::get('message')}}
                             </div>
-                            <div class="control-group col-sm-6">
-                                <input type="email" name="email" id="email" placeholder="your email" class="form-control p-4" value="{{ old('email')}}" required>
-                                <p class="help-block text-danger"></p>
-                            </div>
-                        </div>
-
-                        <div class="control-group">
-                            <input type="text" name="subject" id="subject" placeholder="Subject" class="form-control p-4" value="{{ old('subject')}}" required>
-                            <p class="help-block text-danger"></p>
-                        </div>
-
-                        <div class="control-group">
-                          <textarea class="form-control py-3 px-4" name="content" placeholder="message"  id="message" cols="30" rows="10" required>{{ old('content')}}</textarea>
-                          <p class="help-block text-danger"></p>
-                        </div>
-
-                        <div class="">
-                            <button class="btn btn-outline-primary" type="submit" id="sendMessageButton">Send Message</button>
-                        </div>
-
-                        @if($errors->any())
-                        <br>
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
                         @endif
-                    </form>
+                        <form action="{{route('contacts')}}" id="contactForm" method="POST">
+                            @csrf
+                            <div class="form-row">
+                                <div class="control-group col-sm-6">
+                                    <input type="text" name="name" id="name" placeholder="your name" class="form-control p-4" value="{{ old('name')}}" required>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="control-group col-sm-6">
+                                    <input type="email" name="email" id="email" placeholder="your email" class="form-control p-4" value="{{ old('email')}}" required>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <input type="text" name="subject" id="subject" placeholder="Subject" class="form-control p-4" value="{{ old('subject')}}" required>
+                                <p class="help-block text-danger"></p>
+                            </div>
+
+                            <div class="control-group">
+                            <textarea class="form-control py-3 px-4" name="content" placeholder="message"  id="message" cols="30" rows="10" required>{{ old('content')}}</textarea>
+                            <p class="help-block text-danger"></p>
+                            </div>
+
+                            <div class="">
+                                <button class="btn btn-outline-primary" type="submit" id="sendMessageButton">Send Message</button>
+                            </div>
+
+                            @if($errors->any())
+                            <br>
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            @endif
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-  </div>
   {{-- contact-us-page end--}}
 
+
+
    <!-- Footer Start -->
-   <div class="container-fluid bg-primary text-white mt-5 py-5 px-sm-3 px-md-5">
-    <div class="container text-center py-5">
-        <div class="d-flex justify-content-center mb-4">
-            <a class="btn btn-light btn-social mr-2" href="{{ $setting->github_url }}"  target="_blank"><i class="fab fa-github"></i></a>
-            <a class="btn btn-light btn-social mr-2" href="{{ $setting->fb_url }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a class="btn btn-light btn-social mr-2" href="{{ $setting->linkedin_url }}" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+    <div class="container-fluid bg-primary text-white mt-5 py-5 px-sm-3 px-md-5">
+        <div class="container text-center py-5">
+            <div class="d-flex justify-content-center mb-4">
+                <a class="btn btn-light btn-social mr-2" href="{{ $setting->github_url }}"  target="_blank"><i class="fab fa-github"></i></a>
+                <a class="btn btn-light btn-social mr-2" href="{{ $setting->fb_url }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-light btn-social mr-2" href="{{ $setting->linkedin_url }}" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a class="btn btn-light btn-social mr-2" href="https://medium.com/@nethmiwelgamvila" target="_blank"><i class="fab fa-medium"></i></a>
+            </div>
+            <div class="d-flex justify-content-center mb-3">
+                <a class="text-white" href="#">Privacy</a>
+                <span class="px-3">|</span>
+                <a class="text-white" href="#">Terms</a>
+                <span class="px-3">|</span>
+                <a class="text-white" href="#">FAQs</a>
+                <span class="px-3">|</span>
+                <a class="text-white" href="#">Help</a>
+            </div>
+            {{-- <p class="m-0">&copy; <a class="text-white font-weight-bold" href="#">Domain Name</a>. All Rights Reserved. Designed by <a class="text-white font-weight-bold" href="https://htmlcodex.com">HTML Codex</a>
+            </p> --}}
         </div>
-        <div class="d-flex justify-content-center mb-3">
-            <a class="text-white" href="#">Privacy</a>
-            <span class="px-3">|</span>
-            <a class="text-white" href="#">Terms</a>
-            <span class="px-3">|</span>
-            <a class="text-white" href="#">FAQs</a>
-            <span class="px-3">|</span>
-            <a class="text-white" href="#">Help</a>
-        </div>
-        {{-- <p class="m-0">&copy; <a class="text-white font-weight-bold" href="#">Domain Name</a>. All Rights Reserved. Designed by <a class="text-white font-weight-bold" href="https://htmlcodex.com">HTML Codex</a>
-        </p> --}}
     </div>
-</div>
 <!-- Footer End -->
 @endsection
