@@ -196,14 +196,18 @@
                     </ul>
                 </div>
             </div>
-            <div class="row portfolio-container">
+            <div class="row portfolio-container bg-yellow">
                 @foreach ($portfolios as $portfolio)
-                    <div class="col-lg-4 col-md-6 text-centere  mb-5 portfolio-item {{ Str::slug($portfolio->category->name) }}">
+                    <div class="col-lg-4 col-md-6 text-center mb-5 portfolio-item {{ Str::slug($portfolio->category->name) }} ">
                         <div class="d-flex align-items-center justify-content-center mb-4">
-                            <i class="{{ $portfolio->icon }} service-icon bg-primary text-white mr-3"></i>
-                            <h4 class="font-weight-bold m-0  text-white">{{ $portfolio->category->name }}</h4>
+                            {{-- <i class="{{ $portfolio->icon }} service-icon bg-primary text-white mr-3"></i> --}}
+                            {{-- <h4 class="font-weight-bold m-0  text-white">{{ $portfolio->category->name }}</h4> --}}
+                            <h4 class="font-weight-bold m-0  text-white">{{ $portfolio->title }}</h4>
                         </div>
-                        <p>{{ $service->description }}</p>
+                        <a href="{{ $portfolio->project_url }}">
+                            <img class="img-fluid rounded "  style="width: 200px; height: auto;" src="{{ Storage::url($portfolio->image) }}" alt="project_thumbnail">
+                        </a>
+                       
                     </div>
                 @endforeach
             </div>
@@ -256,8 +260,8 @@
             </div>
         </div>
         </div>
-        <div class="container">
-            <div class="position-relative d-flex align-item-center justify-content-center">
+        <div class="container-fluid py-5 bg-dark text-white">
+            <div class=" position-relative d-flex align-item-center justify-content-center">
                 <h1 class="display-6 text-uppercase text-light-grey" style="-webkit-text-stroke: 1px #dee2e6;">Contact US</h1>
             </div>
             <div class="row justify-content-center">
@@ -268,11 +272,12 @@
                                 {{Session::get('message')}}
                             </div>
                         @endif
-                        <form action="{{route('contacts')}}" id="contactForm" method="POST">
+                        <form action="{{route('contacts')}}" id="contactsForm" method="POST">
+                            {{-- <form action="/contact" method="POST"> --}}
                             @csrf
                             <div class="form-row">
                                 <div class="control-group col-sm-6">
-                                    <input type="text" name="name" id="name" placeholder="your name" class="form-control p-4" value="{{ old('name')}}" required>
+                                    <input type="text" name="name" id="name" placeholder="your name" class="form-control p-4" value="{{ old('name')}}" required >
                                     <p class="help-block text-danger"></p>
                                 </div>
                                 <div class="control-group col-sm-6">
@@ -287,7 +292,7 @@
                             </div>
 
                             <div class="control-group">
-                            <textarea class="form-control py-3 px-4" name="content" placeholder="message"  id="message" cols="30" rows="10" required>{{ old('content')}}</textarea>
+                            <textarea class="form-control py-3 px-4" name="content" placeholder="message"  id="message" cols="30" rows="10" >{{ old('content')}}</textarea>
                             <p class="help-block text-danger"></p>
                             </div>
 

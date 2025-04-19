@@ -25,7 +25,7 @@ use App\Http\Controllers\Admin\ContactController;
 */
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::post('/', [ContactController::class, 'submit'])->name('contacts');
+Route::post('/contact', [ContactController::class, 'submit'])->name('contacts');
 
 
 

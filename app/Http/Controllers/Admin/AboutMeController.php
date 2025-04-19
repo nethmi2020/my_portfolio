@@ -63,11 +63,11 @@ class AboutMeController extends Controller
           'address' => 'required',
           'degree' => 'required',
           'experience' => 'required',
-        //   'birthday' => 'required|date|before_or_equal:today',
+          'birthday' => 'required|date|before_or_equal:today',
           'job' => 'required',
           'image' => 'image|mimes:jpeg,png,jpg|max:2048',
       ]);
-  
+//   dd($validated);
       if($request->hasfile('image')){
           if($user->profile_pic != null){
               Storage::delete($user->profile_pic);

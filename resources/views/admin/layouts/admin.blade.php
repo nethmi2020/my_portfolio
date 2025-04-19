@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Portfolio Admin</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{ asset('import/assets/admin/vendors/mdi/css/materialdesignicons.min.css')}}">
     <link rel="stylesheet" href="{{ asset('import/assets/admin/vendors/css/vendor.bundle.base.css')}}">
@@ -71,12 +73,12 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="collapse" href="#ui-qualification" aria-expanded="false" aria-controls="ui-basic">
+              <a class="nav-link"  aria-expanded="false" aria-controls="ui-basic">
                 <span class="menu-title">Qualifications</span>
-                <i class="menu-arrow"></i>
+                {{-- <i class="menu-arrow"></i> --}}
                 <i class="mdi mdi-crosshairs-gps menu-icon"></i>
               </a>
-              <div class="collapse" id="ui-qualification">
+              <div  id="ui-qualification">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="{{route('admin.qualification.edu')}}">Education</a></li>
                   <li class="nav-item"> <a class="nav-link" href="{{route('admin.qualification.exp')}}">Experience</a></li>
@@ -85,12 +87,12 @@
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="collapse" href="#ui-portfolio" aria-expanded="false" aria-controls="ui-basic">
+              <a class="nav-link"  aria-expanded="false" aria-controls="ui-basic">
                 <span class="menu-title">Portfolios</span>
-                <i class="menu-arrow"></i>
+                {{-- <i class="menu-arrow"></i> --}}
                 <i class="mdi mdi-contacts menu-icon"></i>
               </a>
-              <div class="collapse" id="ui-portfolio">
+              <div id="ui-portfolio">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="{{route('admin.category.index')}}">Category</a></li>
                   <li class="nav-item"> <a class="nav-link" href="{{route('admin.portfolio.index')}}">Portfolio</a></li>

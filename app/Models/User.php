@@ -24,7 +24,7 @@ class User extends Authenticatable
         'phone',
         'address',
         'job',
-        'birth_day',
+        'birthday',
         'degree',
         'experience',
         'profile_pic'

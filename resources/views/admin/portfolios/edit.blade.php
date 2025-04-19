@@ -24,7 +24,7 @@
                 <div class="form-group">
                     <label for="title">Title</label>
                     <input type="text" class="form-control" id="title" name="title" placeholder="Title"
-                        value={{old('title',$portfolio->title)}}>
+                        value="{{old('title',$portfolio->title)}}">
                 </div>
                 <div class="form-group">
                     <label for="image">Upload Image</label>
@@ -45,7 +45,7 @@
                     <label for="exampleInputName1">Category</label>
                     <select class="form-control text-black" id="category_id" name="category_id">
                         @foreach ($categories as $category)
-                            <option value="{{ $category->id }}" {{old('category_id')==$category->id?'selected' : ''}}>{{ $category->name }}</option>
+                            <option value="{{ $category->id }}" {{old('category_id',$portfolio->category_id ?? '')==$category->id?'selected' : ''}}>{{ $category->name }}</option>
                         @endforeach
                     </select>
                 </div>
